@@ -228,10 +228,85 @@
         flex-direction: column;
         gap: 2rem;
       }
-      .about-image {
-        border-radius: 8px;
+
+      .about-text-content {
+        display: flex;
+        flex-direction: column;
+        gap: 1.2rem;
+      }
+
+      .about-strengths {
+        padding-left: 1.2rem;
+        margin: 0.5rem 0 1.5rem 0;
+        color: var(--color-text-secondary);
+      }
+
+      .about-strengths li {
+        margin-bottom: 0.5rem;
+      }
+
+      .about-strengths strong {
+        color: var(--color-accent);
+      }
+
+      .about-actions {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      /* About 區塊專用按鈕樣式 */
+      .btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0.75rem 1.5rem;
+        border-radius: 4px;
+        font-weight: 600;
+        transition: all 0.2s ease;
+        cursor: pointer;
+        text-align: center;
+      }
+
+      .btn-primary {
+        background-color: var(--color-accent);
+        color: var(--color-bg-main);
+        border: 1px solid var(--color-accent);
+      }
+      .btn-primary:hover {
+        background-color: var(--color-accent-hover);
+        color: white;
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        color: var(--color-accent);
+        border: 1px solid var(--color-accent);
+      }
+      .btn-outline:hover {
+        background-color: rgba(56, 189, 248, 0.1);
+        color: var(--color-accent-hover);
+        border-color: var(--color-accent-hover);
+      }
+
+      .about-image-wrapper {
+        border-radius: 12px;
         overflow: hidden;
-        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.5);
+        box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
+        border: 1px solid var(--color-border);
+        /* 讓圖片容器維持一定比例 */
+        aspect-ratio: 4/3;
+      }
+
+      .about-image {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .about-image:hover {
+        transform: scale(1.03);
       }
       /* CSS:ABOUT-END */
 
@@ -291,12 +366,17 @@
           font-size: 2.5rem;
         }
 
-        /* About 轉為雙欄 */
+        /* About 轉為雙欄，文字在左，圖片在右 */
         .section-about .about-grid {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          align-items: center;
+          align-items: center; /* 垂直置中 */
           gap: 4rem;
+        }
+
+        /* 調整桌面版的按鈕排列 */
+        .about-actions {
+          margin-top: 1rem;
         }
 
         /* Projects 轉為網格 */
@@ -379,34 +459,54 @@
           aria-labelledby="about-heading"
         >
           <div class="container">
-            <h2 id="about-heading" class="section-title">關於我</h2>
-
             <div class="about-grid">
+              <!-- Left Column: Text Content -->
+              <div class="about-text-content">
+                <h2 id="about-heading" class="section-title">關於我</h2>
+
+                <p>
+                  您好，我是
+                  Alex。我目前擔任前端工程師，同時也熱衷於技術教學與接案開發。
+                  專注於 React
+                  生態系、現代網頁效能優化，以及打造流暢的使用者體驗。
+                  擅長協助團隊建立規範，將複雜的設計邏輯轉化為乾淨、可維護的程式碼。
+                </p>
+
+                <p>
+                  除了寫 Code，我也非常重視「溝通」與「知識傳遞」。
+                  我深信優秀的開發者不只要能解決問題，更要能清晰地闡述思路。
+                  我的做事風格講求條理與透明，喜歡在技術社群分享所學，幫助更多人跨越程式門檻。
+                </p>
+
+                <ul class="about-strengths">
+                  <li>
+                    <strong>前端架構規劃：</strong
+                    >建立可擴充的元件庫與專案結構，提升開發效率。
+                  </li>
+                  <li>
+                    <strong>UI/UX 互動實作：</strong
+                    >重視微互動細節，實現設計師的完美想像。
+                  </li>
+                  <li>
+                    <strong>技術溝通協作：</strong
+                    >連結設計與工程，降低跨部門溝通成本。
+                  </li>
+                </ul>
+
+                <div class="about-actions">
+                  <a href="#projects" class="btn btn-primary">查看作品集</a>
+                  <a href="#contact" class="btn btn-outline">聯絡我</a>
+                </div>
+              </div>
+
+              <!-- Right Column: Image -->
               <div class="about-image-wrapper">
-                <!-- Unsplash 圖片占位 -->
                 <img
-                  src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
-                  alt="前端開發者在筆電前工作，桌上有咖啡與筆記本"
+                  src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80"
+                  alt="專注於編寫程式碼的工程師特寫"
                   class="about-image"
                   loading="lazy"
                 />
-              </div>
-              <div class="about-text">
-                <p class="lead">
-                  Hello! 我是一名熱愛新技術的前端開發者，擁有 3
-                  年的網頁開發經驗。
-                </p>
-                <div class="placeholder-box">
-                  <p><strong>[ About 區占位內容 ]</strong></p>
-                  <p>
-                    這裡將來會用來詳細介紹我的背景、學經歷以及我對前端開發的熱情。
-                  </p>
-                  <code class="placeholder-note">
-                    // 提示：之後會用 Section SDD 的 Prompt 產生新的
-                    section，請把新的 section
-                    程式碼整段貼在這兩個註解中間，完全取代現在這一區。
-                  </code>
-                </div>
               </div>
             </div>
           </div>
